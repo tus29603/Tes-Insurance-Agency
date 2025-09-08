@@ -1,0 +1,17 @@
+import React from "react";
+
+export function ShieldIcon(){return(<svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor" aria-hidden><path d="M12 2l7 4v6c0 5-3.5 9-7 10-3.5-1-7-5-7-10V6l7-4z"/></svg>)}
+export function SparklesIcon(){return(<svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor" aria-hidden><path d="M9 3l1.5 3L14 7.5 10.5 9 9 12l-1.5-3L3 7.5 7.5 6 9 3zm8 6l1 2 2 1-2 1-1 2-1-2-2-1 2-1 1-2zM6 16l1 2 2 1-2 1-1 2-1-2-2-1 2-1 1-2z"/></svg>)}
+export function ClockIcon(){return(<svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor" aria-hidden><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm1 5h-2v6l5 3 1-1.7-4-2.3V7z"/></svg>)}
+export function CarIcon(){return(<svg viewBox="0 0 24 24" className="h-6 w-6" fill="currentColor" aria-hidden><path d="M5 11l1-3c.3-.9 1.1-1.5 2-1.5h8c.9 0 1.7.6 2 1.5l1 3v6h-2v-2H7v2H5v-6zm3-3l-1 3h10l-1-3H8zm0 7a1.5 1.5 0 110-3 1.5 1.5 0 010 3zm8 0a1.5 1.5 0 110-3 1.5 1.5 0 010 3z"/></svg>)}
+export function HomeIcon(){return(<svg viewBox="0 0 24 24" className="h-6 w-6" fill="currentColor" aria-hidden><path d="M12 3l9 8h-3v9h-5v-6H11v6H6v-9H3l9-8z"/></svg>)}
+export function KeyIcon(){return(<svg viewBox="0 0 24 24" className="h-6 w-6" fill="currentColor" aria-hidden><path d="M14 3a6 6 0 00-5.9 7.1L2 16.2V19h2v2h2v-2h2v-2h2l2-2a6 6 0 102-12zm0 10a4 4 0 110-8 4 4 0 010 8z"/></svg>)}
+export function BuildingIcon(){return(<svg viewBox="0 0 24 24" className="h-6 w-6" fill="currentColor" aria-hidden><path d="M4 22h16V2H8v6H4v14zm4-12h2v2H8v-2zm0 4h2v2H8v-2zm0 4h2v2H8v-2zm4-8h2v2h-2v-2zm0 4h2v2h-2v-2zm0 4h2v2h-2v-2z"/></svg>)}
+export function TruckIcon(){return(<svg viewBox="0 0 24 24" className="h-6 w-6" fill="currentColor" aria-hidden><path d="M3 6h11v7h2l3 3v2h-2a2 2 0 11-4 0H9a2 2 0 11-4 0H3V6zm14 7V8h2l2 3v2h-4z"/></svg>)}
+export function UsersIcon(){return(<svg viewBox="0 0 24 24" className="h-6 w-6" fill="currentColor" aria-hidden><path d="M16 11c1.7 0 3-1.8 3-4s-1.3-4-3-4-3 1.8-3 4 1.3 4 3 4zM8 11c1.7 0 3-1.8 3-4S9.7 3 8 3 5 4.8 5 7s1.3 4 3 4zm0 2c-2.7 0-8 1.3-8 4v3h10v-3c0-2.7-5.3-4-2-4zm8 0c-.8 0-1.6.1-2.3.3 1.5.9 2.3 2.1 2.3 3.7v3h8v-3c0-2.7-5.3-4-8-4z"/></svg>)}
+export function UmbrellaIcon(){return(<svg viewBox="0 0 24 24" className="h-6 w-6" fill="currentColor" aria-hidden><path d="M12 2C6.5 2 2 6.5 2 12h20C22 6.5 17.5 2 12 2zm1 11v7a2 2 0 11-4 0h2v-7h2z"/></svg>)}
+export function ChevronIcon(){return(<svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor" aria-hidden><path d="M12 15l-6-6h12l-6 6z"/></svg>)}
+export function PhoneIcon(){return(<svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor" aria-hidden><path d="M6.6 10.8a15.9 15.9 0 006.6 6.6l2.2-2.2c.3-.3.8-.4 1.2-.3 1 .3 2.1.5 3.2.5.7 0 1.2.5 1.2 1.2V20c0 .7-.5 1.2-1.2 1.2A17.8 17.8 0 012 3.2C2 2.5 2.5 2 3.2 2h3.4c.7 0 1.2.5 1.2 1.2 0 1.1.2 2.2.5 3.2.1.4 0 .9-.3 1.2l-2.2 2.2z"/></svg>)}
+export function MailIcon(){return(<svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor" aria-hidden><path d="M2 6c0-1.1.9-2 2-2h16a2 2 0 012 2v12a2 2 0 01-2 2H4a2 2 0 01-2-2V6zm2 0l8 5 8-5H4zm16 12V8l-8 5-8-5v10h16z"/></svg>)}
+export function PinIcon(){return(<svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor" aria-hidden><path d="M12 2a7 7 0 00-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 00-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>)}
+export function CheckIcon(){return(<svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor" aria-hidden><path d="M9 16.2l-3.5-3.5-1.4 1.4L9 19 20 8l-1.4-1.4L9 16.2z"/></svg>)}
