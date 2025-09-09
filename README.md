@@ -46,35 +46,38 @@ classDiagram
     +Date createdAt
   }
 
-class carrier {
-+name: str
-+logoUrl: str
-+products: list[str] (Auto, Home, GL, etc.)
-+apiEnabled: bool
-+contactInfo: dict
-}
-class logs{
-+logId: str
-+author: ref
-+action: str
-+entityType: str (lead, quote, user)
-+entityId: str
-+details: str
-+loggedAt: Date
-}
+  class carrier {
+    +name: str
+    +logoUrl: str
+    +products: list[str] (Auto, Home, GL, etc.)
+    +apiEnabled: bool
+    +contactInfo: dict
+  }
 
-class policies{
-+policyId: str
-+quote: ref
-+carrier: ref
-+effectiveDate: Date
-+expirationDate: Date
-+premium: int
-+documents: list[str]
-+status: str (active, canceled, expired)
-}
+  class logs {
+    +logId: str
+    +author: ref
+    +action: str
+    +entityType: str (lead, quote, user)
+    +entityId: str
+    +details: str
+    +loggedAt: Date
+  }
+
+  class policies {
+    +policyId: str
+    +quote: ref
+    +carrier: ref
+    +effectiveDate: Date
+    +expirationDate: Date
+    +premium: int
+    +documents: list[str]
+    +status: str (active, canceled, expired)
+  }
+
   User --> Lead
   Lead --> Quote
   Quote --> carrier
   carrier --> logs
   logs --> policies
+
