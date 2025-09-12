@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { CarIcon, HomeIcon, KeyIcon, BuildingIcon, TruckIcon, ShieldIcon, UsersIcon, UmbrellaIcon } from "../icons/index.jsx";
 
 export default function Products() {
@@ -19,6 +20,7 @@ export default function Products() {
         <h2 className="text-2xl sm:text-3xl font-bold text-slate-900">Coverage we offer</h2>
         <p className="mt-2 text-slate-600">Bundle and save. Ask about auto + home discounts and multi-policy credits.</p>
       </div>
+
       <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
         {items.map((item) => (
           <div key={item.title} className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm hover:shadow-md transition">
@@ -28,8 +30,15 @@ export default function Products() {
           </div>
         ))}
       </div>
+
       <div className="mt-10 flex items-center justify-center">
-        <a href="/quote" className="inline-flex items-center rounded-xl bg-blue-600 px-5 py-3 text-white font-medium shadow hover:bg-blue-700">Start my quote</a>
+        {/* Use router link so HashRouter navigates to #/quote without reloading */}
+        <Link
+          to="/quote"
+          className="inline-flex items-center rounded-xl bg-blue-600 px-5 py-3 text-white font-medium shadow hover:bg-blue-700"
+        >
+          Start my quote
+        </Link>
       </div>
     </section>
   );
