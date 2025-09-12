@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 import Header from "./components/layout/Header.jsx";
 import SiteFooter from "./components/layout/SiteFooter.jsx";
@@ -21,15 +21,16 @@ export default function App() {
   const LICENSE = "PA Lic #TBD";
 
   return (
-    <Router>
-      <Routes>
-        {/* Landing Page */}
-        <Route
-          path="/"
-          element={
-            <div className="min-h-screen bg-slate-50 text-slate-800">
-              <Header agencyName={AGENCY_NAME} phone={PHONE} />
-              <main>
+    <div className="min-h-screen bg-slate-50 text-slate-800">
+      {/* Shared layout */}
+      <Header agencyName={AGENCY_NAME} phone={PHONE} />
+      <main>
+        <Routes>
+          {/* Landing Page */}
+          <Route
+            path="/"
+            element={
+              <>
                 <Hero agencyName={AGENCY_NAME} phone={PHONE} />
                 <Products />
                 <WhyUs />
@@ -37,15 +38,15 @@ export default function App() {
                 <Carriers />
                 <FAQ />
                 <Contact email={EMAIL} address={ADDRESS} phone={PHONE} license={LICENSE} />
-              </main>
-              <SiteFooter agencyName={AGENCY_NAME} license={LICENSE} email={EMAIL} />
-            </div>
-          }
-        />
+              </>
+            }
+          />
 
-        {/* Quote Page */}
-        <Route path="/quote" element={<QuotePage />} />
-      </Routes>
-    </Router>
+          {/* Quote Page */}
+          <Route path="/quote" element={<QuotePage />} />
+        </Routes>
+      </main>
+      <SiteFooter agencyName={AGENCY_NAME} license={LICENSE} email={EMAIL} />
+    </div>
   );
 }
