@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
+ import ConsentFields from "../ConsentFields.jsx";
 
 // For GitHub Pages, simplest is to hardcode your Formspree ID.
 // Later you can switch to env: import.meta.env.VITE_FORMSPREE_ID
@@ -9,7 +10,7 @@ const endpoint = `https://formspree.io/f/${FORMSPREE_ID}`;
 const CURRENT_YEAR = new Date().getFullYear();
 const YEARS = Array.from({ length: CURRENT_YEAR - 1980 }, (_, i) => String(CURRENT_YEAR - i));
 
-export default function QuoteForm({ dark = false }) {
+export default function QuoteForm({ dark = false, email = "tesfie056@gmail.com" }) {
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -44,6 +45,13 @@ export default function QuoteForm({ dark = false }) {
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState("");
 
+  // ✅ Include all three keys so checkboxes are properly controlled
+  const [consent, setConsent] = useState({
+    acceptTerms: false,
+    tcpConsent: true,
+    marketingOptIn: false,
+  });
+
   // Load vehicles.json only when Auto is selected
   useEffect(() => {
     if (form.type !== "Auto") return;
@@ -52,7 +60,7 @@ export default function QuoteForm({ dark = false }) {
       try {
         setVehError("");
         setLoadingVehicles(true);
-        const resp = await fetch("/vehicles.json", { cache: "force-cache" });
+        const resp = await fetch(`${import.meta.env.BASE_URL}vehicles.json`, { cache: "force-cache" });
         if (!resp.ok) throw new Error("vehicles.json not found in /public");
         const data = await resp.json();
         if (!ignore) setVehicles(data);
@@ -86,8 +94,7 @@ export default function QuoteForm({ dark = false }) {
   }
 
   // --- Validation per coverage type ---
-  const autoValid =
-    form.type !== "Auto" || (form.vehicleYear && form.vehicleMake && form.vehicleModel);
+  const autoValid = form.type !== "Auto" || (form.vehicleYear && form.vehicleMake && form.vehicleModel);
 
   const propertyTypes = ["Homeowners", "Renters", "Landlord / DP", "Umbrella"];
   const propertyValid =
@@ -97,8 +104,7 @@ export default function QuoteForm({ dark = false }) {
       Number(form.yearBuilt) >= 1900 &&
       Number(form.yearBuilt) <= CURRENT_YEAR);
 
-  const commAutoValid =
-    form.type !== "Commercial Auto / Trucking" || form.businessName.trim().length > 1;
+  const commAutoValid = form.type !== "Commercial Auto / Trucking" || form.businessName.trim().length > 1;
 
   const wcValid =
     form.type !== "Workers' Comp" ||
@@ -107,8 +113,7 @@ export default function QuoteForm({ dark = false }) {
       Number(form.numEmployees) >= 1 &&
       Number(form.annualPayroll) >= 0);
 
-  const glValid =
-    form.type !== "General Liability" || form.businessName.trim().length > 1;
+  const glValid = form.type !== "General Liability" || form.businessName.trim().length > 1;
 
   const baseValid =
     form.name.trim().length > 1 &&
@@ -121,8 +126,16 @@ export default function QuoteForm({ dark = false }) {
   async function handleSubmit(e) {
     e.preventDefault();
     setError("");
+
     if (form.company) return; // honeypot for bots
-    if (!isValid) return;
+    if (!isValid) {
+      setError("Please complete the required fields above.");
+      return;
+    }
+    if (!consent.acceptTerms) {
+      setError("Please accept the Terms and Privacy Policy to continue.");
+      return;
+    }
 
     try {
       setSubmitting(true);
@@ -168,7 +181,13 @@ export default function QuoteForm({ dark = false }) {
         if (form.operations) fd.append("operations", form.operations);
       }
 
+      // Subject line for Formspree
       fd.append("_subject", `New Quote Request – ${form.type} – ${form.name}`);
+
+      // Consent values
+      fd.append("Consent: Terms & Privacy", consent.acceptTerms ? "Yes" : "No");
+      fd.append("Consent: TCPA", consent.tcpConsent ? "Yes" : "No");
+      fd.append("Consent: Marketing", consent.marketingOptIn ? "Yes" : "No");
 
       const resp = await fetch(endpoint, {
         method: "POST",
@@ -182,6 +201,7 @@ export default function QuoteForm({ dark = false }) {
       }
 
       setSuccess(true);
+      // reset form + consent
       setForm({
         name: "",
         email: "",
@@ -201,6 +221,7 @@ export default function QuoteForm({ dark = false }) {
         operations: "",
         company: "",
       });
+      setConsent({ acceptTerms: false, tcpConsent: true, marketingOptIn: false });
     } catch (err) {
       setError(err.message || "Something went wrong.");
     } finally {
@@ -292,7 +313,7 @@ export default function QuoteForm({ dark = false }) {
             value={form.zip}
             onChange={handleChange}
             inputMode="numeric"
-            pattern="[0-9]{5}"   // ← fixed pattern
+            pattern="[0-9]{5}"
             placeholder="19142"
             className="mt-1 w-full rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm focus:border-blue-500 focus:outline-none"
           />
@@ -529,12 +550,18 @@ export default function QuoteForm({ dark = false }) {
         </div>
       </div>
 
-      {error && <p className="text-sm text-red-600">{error}</p>}
+      {/* Consent section */}
+      <ConsentFields values={consent} onChange={setConsent} dark={dark} />
+
+      {error && <p className="text-sm text-red-600" role="alert">{error}</p>}
 
       <button
-        disabled={!isValid || submitting}
+        type="submit"
+        disabled={!isValid || submitting || !consent.acceptTerms}
         className={`w-full rounded-xl px-5 py-3 font-medium shadow ${
-          !isValid || submitting ? "bg-slate-200 text-slate-500 cursor-not-allowed" : "bg-blue-600 text-white hover:bg-blue-700"
+          !isValid || submitting || !consent.acceptTerms
+            ? "bg-slate-200 text-slate-500 cursor-not-allowed"
+            : "bg-blue-600 text-white hover:bg-blue-700"
         }`}
       >
         {submitting ? "Sending..." : "Send quote request"}
