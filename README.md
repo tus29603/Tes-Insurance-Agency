@@ -6,9 +6,10 @@
 
 
 <p align="center">
-    <a href="(https://tesinsurance.com">
-    <img src="https://img.shields.io/badge/Tes Insurance-green?style=for-the-badge" alt="Tes Insurance"/>
-  </a>
+   <a href="https://tesinsurance.com">
+  <img src="https://img.shields.io/badge/Tes%20Insurance-green?style=for-the-badge" alt="Tes Insurance"/>
+</a>
+
   <a href="https://firebase.google.com/">
     <img src="https://img.shields.io/badge/Firebase-FFCA28?style=for-the-badge&logo=firebase&logoColor=black" alt="Firebase"/>
   </a>
