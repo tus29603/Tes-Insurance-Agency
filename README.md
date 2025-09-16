@@ -3,11 +3,7 @@
 
 # Tes Insurance Agency
 
-<p align="center">
-  <a href="https://formspree.io/forms/xzzaowkq/submissions">
-    <img src="https://img.shields.io/badge/Formspree-red?style=for-the-badge" alt="Formspree"/>
-  </a>
-</p>
+
 
 <p align="center">
   <a href="https://firebase.google.com/">
