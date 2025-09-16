@@ -9,6 +9,20 @@
   </a>
 </p>
 
+<p align="center">
+  <a href="https://firebase.google.com/">
+    <img src="https://img.shields.io/badge/Firebase-FFCA28?style=for-the-badge&logo=firebase&logoColor=black" alt="Firebase"/>
+  </a>
+  <a href="https://www.atlassian.com/software/jira">
+    <img src="https://img.shields.io/badge/Jira-0052CC?style=for-the-badge&logo=jira&logoColor=white" alt="Jira"/>
+  </a>
+  <a href="https://www.figma.com/">
+    <img src="https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white" alt="Figma"/>
+  </a>
+  <a href="https://formspree.io/forms/xzzaowkq/submissions">
+    <img src="https://img.shields.io/badge/Formspree-red?style=for-the-badge" alt="Formspree"/>
+  </a>
+</p>
 
 
 Modern insurance agency platform (marketing site → instant quote).  
