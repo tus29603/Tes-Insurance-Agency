@@ -4,7 +4,9 @@
 # Tes Insurance Agency
 
 <p align="center">
-  [![Formspree](https://img.shields.io/badge/Formspree-red?style=for-the-badge)](https://formspree.io/forms/xzzaowkq/submissions)
+  <a href="https://formspree.io/forms/xzzaowkq/submissions">
+    <img src="https://img.shields.io/badge/Formspree-red?style=for-the-badge" alt="Formspree"/>
+  </a>
 </p>
 
 
