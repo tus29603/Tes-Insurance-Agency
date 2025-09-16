@@ -3,6 +3,11 @@
 
 # Tes Insurance Agency
 
+<p align="center">
+  <a href="https://tesinsurance.com">
+    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://tesinsurance.com" alt="QR Code for Tes Insurance"/>
+  </a>
+</p>
 
 
 <p align="center">
