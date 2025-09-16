@@ -3,7 +3,8 @@
 
 # Tes Insurance Agency
 
-[![Formspree] (https://formspree.io/forms/xzzaowkq/submissions)](<LINK>) 
+[![Formspree](https://img.shields.io/badge/Formspree-Submissions-ff69b4?logo=maildotru&logoColor=white)](https://formspree.io/forms/xzzaowkq/submissions)
+
 
 Modern insurance agency platform (marketing site → instant quote).  
 Stack: React (Vite) + Tailwind. Roadmap: backend (Postgres + Prisma), client portal, and rater integrations.
