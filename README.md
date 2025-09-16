@@ -3,7 +3,9 @@
 
 # Tes Insurance Agency
 
-[![Formspree](https://img.shields.io/badge/Formspree-red?style=for-the-badge)](https://formspree.io/forms/xzzaowkq/submissions)
+<p align="center">
+  [![Formspree](https://img.shields.io/badge/Formspree-red?style=for-the-badge)](https://formspree.io/forms/xzzaowkq/submissions)
+</p>
 
 
 
