@@ -3,7 +3,7 @@
 
 # Tes Insurance Agency
 
-[![Formspree](https://img.shields.io/badge/Formspree-Submissions-ff69b4?logo=maildotru&logoColor=white)](https://formspree.io/forms/xzzaowkq/submissions)
+[![Formspree](https://img.shields.io/badge/Formspree-red)](https://formspree.io/forms/xzzaowkq/submissions)
 
 
 Modern insurance agency platform (marketing site → instant quote).  
