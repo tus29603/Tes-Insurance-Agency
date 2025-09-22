@@ -6,7 +6,6 @@ import SiteFooter from "./components/layout/SiteFooter.jsx";
 import Hero from "./components/sections/Hero.jsx";
 import Products from "./components/sections/Products.jsx";
 import WhyUs from "./components/sections/WhyUs.jsx";
-import Testimonials from "./components/sections/Testimonials.jsx";
 import Carriers from "./components/sections/Carriers.jsx";
 import FAQ from "./components/sections/FAQ.jsx";
 import ContactSection from "./components/sections/Contact.jsx";
@@ -24,7 +23,6 @@ export default function App() {
   const AGENCY_NAME = "Tes Insurance Agency";
   const PHONE = "(215) 555-0199";
   const EMAIL = "quotes@tesinsurance.com";
-  const ADDRESS = "6622 Cormorant Pl, Philadelphia, PA 19142";
   const LICENSE = "PA Lic #TBD";
 
   return (
@@ -40,12 +38,10 @@ export default function App() {
                 <Hero agencyName={AGENCY_NAME} phone={PHONE} />
                 <Products />
                 <WhyUs />
-                <Testimonials />
                 <Carriers />
                 <FAQ />
                 <ContactSection
                   email={EMAIL}
-                  address={ADDRESS}
                   phone={PHONE}
                   license={LICENSE}
                 />

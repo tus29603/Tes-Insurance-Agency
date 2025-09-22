@@ -6,21 +6,18 @@ export default function About() {
     {
       name: "Tesfie Tsegaye",
       role: "Founder & CEO",
-      experience: "20+ years",
-      description: "Licensed insurance professional with extensive experience in personal and commercial insurance. Tesfie founded Tes Insurance Agency to provide personalized service and competitive rates to the Philadelphia community.",
+      description: "Licensed insurance professional focused on providing personalized service and competitive rates to the Philadelphia community. Tesfie founded Tes Insurance Agency to help individuals and businesses find the right coverage.",
       specialties: ["Auto Insurance", "Home Insurance", "Commercial Insurance", "Risk Management"]
     },
     {
       name: "Sarah Johnson",
-      role: "Senior Insurance Agent",
-      experience: "15+ years",
+      role: "Insurance Agent",
       description: "Specializes in homeowners and renters insurance with a focus on helping families find comprehensive coverage that fits their budget.",
       specialties: ["Home Insurance", "Renters Insurance", "Umbrella Insurance", "Claims Support"]
     },
     {
       name: "Michael Rodriguez",
       role: "Commercial Insurance Specialist",
-      experience: "12+ years",
       description: "Expert in commercial insurance solutions for small to medium businesses, helping entrepreneurs protect their investments and operations.",
       specialties: ["General Liability", "Workers' Compensation", "Commercial Auto", "Business Insurance"]
     }
@@ -50,10 +47,10 @@ export default function About() {
   ];
 
   const stats = [
-    { number: "500+", label: "Happy Customers" },
-    { number: "20+", label: "Years Experience" },
     { number: "50+", label: "Insurance Carriers" },
-    { number: "24/7", label: "Claims Support" }
+    { number: "24/7", label: "Claims Support" },
+    { number: "100%", label: "Customer Focused" },
+    { number: "Free", label: "Quotes & Consultations" }
   ];
 
   return (
@@ -100,18 +97,18 @@ export default function About() {
               </h2>
               <div className="space-y-4 text-slate-600">
                 <p>
-                  Founded in 2004, Tes Insurance Agency began with a simple mission: to provide honest, 
+                  Tes Insurance Agency was founded with a simple mission: to provide honest, 
                   personalized insurance solutions to the Philadelphia community. Our founder, Tesfie Tsegaye, 
                   recognized that many people were overpaying for insurance or had coverage gaps that left them vulnerable.
                 </p>
                 <p>
-                  Over the past two decades, we've grown from a small local agency to a trusted partner for 
-                  hundreds of families and businesses. We've maintained our commitment to personalized service 
-                  while expanding our capabilities to serve a wider range of insurance needs.
+                  As a new agency, we're building our reputation through exceptional service and 
+                  competitive rates. We're committed to personalized service while expanding our 
+                  capabilities to serve a wide range of insurance needs.
                 </p>
                 <p>
-                  Today, we work with over 50 top-rated insurance carriers to find the best coverage at the 
-                  most competitive rates. Our team of licensed professionals combines deep industry knowledge 
+                  We work with over 50 top-rated insurance carriers to find the best coverage at the 
+                  most competitive rates. Our team of licensed professionals combines industry knowledge 
                   with genuine care for our clients' well-being.
                 </p>
               </div>
@@ -123,7 +120,7 @@ export default function About() {
               <ul className="space-y-3">
                 <li className="flex items-start gap-3">
                   <span className="text-blue-600 font-bold">✓</span>
-                  <span>Licensed and experienced professionals</span>
+                  <span>Licensed and dedicated professionals</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-blue-600 font-bold">✓</span>
@@ -203,9 +200,6 @@ export default function About() {
                   </h3>
                   <p className="text-blue-600 font-medium">
                     {member.role}
-                  </p>
-                  <p className="text-sm text-slate-500">
-                    {member.experience} experience
                   </p>
                 </div>
                 <p className="text-slate-600 mb-4">

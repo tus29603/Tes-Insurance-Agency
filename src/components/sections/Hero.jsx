@@ -27,7 +27,7 @@ export default function Hero({ agencyName, phone }) {
           <ul className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-blue-100 text-sm">
             <li className="flex items-center gap-2"><ShieldIcon /> Personalized advice</li>
             <li className="flex items-center gap-2"><SparklesIcon /> Multiple carrier quotes</li>
-            <li className="flex items-center gap-2"><ClockIcon /> Same-day bind (most policies)</li>
+            <li className="flex items-center gap-2"><ClockIcon /> Fast service</li>
           </ul>
         </div>
       </div>

@@ -5,7 +5,6 @@ export default function Contact() {
   const contactInfo = {
     phone: "(215) 555-0199",
     email: "quotes@tesinsurance.com",
-    address: "6622 Cormorant Pl, Philadelphia, PA 19142",
     hours: {
       weekdays: "Monday - Friday: 8:00 AM - 6:00 PM",
       saturday: "Saturday: 9:00 AM - 2:00 PM",
@@ -109,19 +108,6 @@ export default function Contact() {
                   </div>
                 </div>
 
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                    <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-semibold text-slate-900">Address</h3>
-                    <p className="text-slate-600">{contactInfo.address}</p>
-                    <p className="text-sm text-slate-500">Visit us at our office</p>
-                  </div>
-                </div>
               </div>
 
               <div className="mt-8 p-6 bg-slate-50 rounded-xl">
@@ -275,33 +261,6 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* Map Section */}
-      <section className="py-16 bg-slate-50">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold text-slate-900 mb-4">
-              Visit Our Office
-            </h2>
-            <p className="text-lg text-slate-600">
-              Located in the heart of Philadelphia, we're easily accessible by car or public transportation.
-            </p>
-          </div>
-
-          <div className="bg-white rounded-xl shadow-lg overflow-hidden">
-            <div className="h-96 bg-slate-200 flex items-center justify-center">
-              <div className="text-center">
-                <div className="text-4xl mb-4">📍</div>
-                <h3 className="text-xl font-semibold text-slate-900 mb-2">
-                  {contactInfo.address}
-                </h3>
-                <p className="text-slate-600">
-                  Interactive map would be integrated here
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
     </div>
   );
 }

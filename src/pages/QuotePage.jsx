@@ -47,7 +47,7 @@ export default function QuotePage() {
         <div className="mt-8 p-4 bg-blue-50 rounded-lg">
           <h3 className="font-semibold text-blue-900 mb-2">Why Choose Tes Insurance Agency?</h3>
           <ul className="text-sm text-blue-800 space-y-1">
-            <li>• Licensed agents with 20+ years of experience</li>
+            <li>• Licensed and dedicated insurance professionals</li>
             <li>• Access to 50+ top-rated insurance carriers</li>
             <li>• Personalized service and competitive rates</li>
             <li>• 24/7 claims support and customer service</li>
