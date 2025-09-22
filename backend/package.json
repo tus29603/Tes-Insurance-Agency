@@ -1,0 +1,44 @@
+{
+  "name": "tes-insurance-backend",
+  "version": "1.0.0",
+  "description": "Backend API for Tes Insurance Agency",
+  "main": "src/server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
+    "build": "echo 'No build step required'",
+    "test": "jest",
+    "migrate": "node src/database/migrate.js",
+    "seed": "node src/database/seed.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "helmet": "^7.1.0",
+    "dotenv": "^16.3.1",
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^9.0.2",
+    "express-rate-limit": "^7.1.5",
+    "express-validator": "^7.0.1",
+    "nodemailer": "^6.9.7",
+    "sqlite3": "^5.1.6",
+    "better-sqlite3": "^9.2.2",
+    "uuid": "^9.0.1",
+    "joi": "^17.11.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2",
+    "jest": "^29.7.0",
+    "supertest": "^6.3.3"
+  },
+  "keywords": [
+    "insurance",
+    "api",
+    "backend",
+    "express",
+    "nodejs"
+  ],
+  "author": "Tes Insurance Agency",
+  "license": "MIT"
+}
