@@ -22,7 +22,7 @@ import NotFound from "./pages/NotFound.jsx";
 export default function App() {
   const AGENCY_NAME = "Tes Insurance Agency";
   const PHONE = "(215) 555-0199";
-  const EMAIL = "quotes@tesinsurance.com";
+  const EMAIL = "info@tesinsurance.com";
   const LICENSE = "PA Lic #TBD";
 
   return (

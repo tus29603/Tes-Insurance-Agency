@@ -10,7 +10,7 @@ const endpoint = `https://formspree.io/f/${FORMSPREE_ID}`;
 const CURRENT_YEAR = new Date().getFullYear();
 const YEARS = Array.from({ length: CURRENT_YEAR - 1980 }, (_, i) => String(CURRENT_YEAR - i));
 
-export default function QuoteForm({ dark = false, email = "tesfie056@gmail.com" }) {
+export default function QuoteForm({ dark = false, email = "info@tesinsurance.com" }) {
   const [form, setForm] = useState({
     name: "",
     email: "",

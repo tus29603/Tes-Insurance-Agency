@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export default function Contact() {
   const contactInfo = {
     phone: "(215) 555-0199",
-    email: "quotes@tesinsurance.com",
+    email: "info@tesinsurance.com",
     hours: {
       weekdays: "Monday - Friday: 8:00 AM - 6:00 PM",
       saturday: "Saturday: 9:00 AM - 2:00 PM",
@@ -17,21 +17,21 @@ export default function Contact() {
       name: "Tesfie Tsegaye",
       role: "Founder & CEO",
       phone: "(215) 555-0199",
-      email: "tesfie@tesinsurance.com",
+      email: "info@tesinsurance.com",
       specialties: ["Auto Insurance", "Home Insurance", "Commercial Insurance"]
     },
     {
       name: "Sarah Johnson",
       role: "Senior Insurance Agent",
       phone: "(215) 555-0200",
-      email: "sarah@tesinsurance.com",
+      email: "info@tesinsurance.com",
       specialties: ["Home Insurance", "Renters Insurance", "Claims Support"]
     },
     {
       name: "Michael Rodriguez",
       role: "Commercial Specialist",
       phone: "(215) 555-0201",
-      email: "michael@tesinsurance.com",
+      email: "info@tesinsurance.com",
       specialties: ["General Liability", "Workers' Comp", "Business Insurance"]
     }
   ];
