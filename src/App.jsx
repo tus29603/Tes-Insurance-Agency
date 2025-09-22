@@ -6,15 +6,19 @@ import SiteFooter from "./components/layout/SiteFooter.jsx";
 import Hero from "./components/sections/Hero.jsx";
 import Products from "./components/sections/Products.jsx";
 import WhyUs from "./components/sections/WhyUs.jsx";
-// import Testimonials from "./components/sections/Testimonials.jsx"; // ← comment out if file missing
+import Testimonials from "./components/sections/Testimonials.jsx";
 import Carriers from "./components/sections/Carriers.jsx";
 import FAQ from "./components/sections/FAQ.jsx";
-import Contact from "./components/sections/Contact.jsx";
+import ContactSection from "./components/sections/Contact.jsx";
 
 // ✅ Use default imports (safer)
 import Terms from "./pages/Terms.jsx";
 import Privacy from "./pages/Privacy.jsx";
 import QuotePage from "./pages/QuotePage.jsx";
+import About from "./pages/About.jsx";
+import Services from "./pages/Services.jsx";
+import Contact from "./pages/Contact.jsx";
+import NotFound from "./pages/NotFound.jsx";
 
 export default function App() {
   const AGENCY_NAME = "Tes Insurance Agency";
@@ -36,10 +40,10 @@ export default function App() {
                 <Hero agencyName={AGENCY_NAME} phone={PHONE} />
                 <Products />
                 <WhyUs />
-                {/* <Testimonials /> */}
+                <Testimonials />
                 <Carriers />
                 <FAQ />
-                <Contact
+                <ContactSection
                   email={EMAIL}
                   address={ADDRESS}
                   phone={PHONE}
@@ -56,8 +60,20 @@ export default function App() {
           {/* Quote Page */}
           <Route path="/quote" element={<QuotePage />} />
 
-          {/* Fallback: redirect unknown paths to home */}
-          <Route path="*" element={<Navigate to="/" replace />} />
+          {/* About Page */}
+          <Route path="/about" element={<About />} />
+
+          {/* Services Page */}
+          <Route path="/services" element={<Services />} />
+
+          {/* Contact Page */}
+          <Route path="/contact" element={<Contact />} />
+
+          {/* 404 Page */}
+          <Route path="/404" element={<NotFound />} />
+
+          {/* Fallback: redirect unknown paths to 404 */}
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
       <SiteFooter agencyName={AGENCY_NAME} license={LICENSE} email={EMAIL} />
