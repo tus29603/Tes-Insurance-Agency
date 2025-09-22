@@ -6,9 +6,14 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "build:prod": "NODE_ENV=production vite build",
     "preview": "vite preview",
     "lint": "eslint .",
-    "deploy": "vite build && gh-pages -d dist"
+    "lint:fix": "eslint . --fix",
+    "deploy": "vite build && gh-pages -d dist",
+    "deploy:prod": "npm run build:prod && gh-pages -d dist",
+    "clean": "rm -rf dist",
+    "type-check": "tsc --noEmit"
   },
   "dependencies": {
     "react": "^19.1.1",

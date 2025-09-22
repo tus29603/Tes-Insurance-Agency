@@ -1,6 +1,7 @@
 import React from "react";
 import { digitsOnly } from "../../lib/phone.js";
 import { ShieldIcon, SparklesIcon, ClockIcon } from "../icons/index.jsx";
+import { trackCTAClick, trackPhoneClick } from "../../lib/analytics.js";
 
 export default function Hero({ agencyName, phone }) {
   return (
@@ -17,10 +18,18 @@ export default function Hero({ agencyName, phone }) {
             {agencyName} compares top carriers to find the right coverage at the right price—so you can focus on what matters.
           </p>
           <div className="mt-8 flex flex-col sm:flex-row gap-3">
-            <a href="#quote" className="inline-flex items-center justify-center rounded-xl bg-white px-5 py-3 font-medium text-blue-700 shadow hover:bg-blue-50">
+            <a 
+              href="#quote" 
+              onClick={() => trackCTAClick('Get Free Quote', 'Hero Section')}
+              className="inline-flex items-center justify-center rounded-xl bg-white px-5 py-3 font-medium text-blue-700 shadow hover:bg-blue-50"
+            >
               Get my free quote
             </a>
-            <a href={`tel:${digitsOnly(phone)}`} className="inline-flex items-center justify-center rounded-xl border border-white/40 px-5 py-3 font-medium text-white hover:bg-white/10">
+            <a 
+              href={`tel:${digitsOnly(phone)}`} 
+              onClick={() => trackPhoneClick(phone, 'Hero Section')}
+              className="inline-flex items-center justify-center rounded-xl border border-white/40 px-5 py-3 font-medium text-white hover:bg-white/10"
+            >
               Call us: {phone}
             </a>
           </div>

@@ -1,7 +1,9 @@
 import { Routes, Route, Navigate } from "react-router-dom";
+import SITE from "./config/site.js";
 
 import Header from "./components/layout/Header.jsx";
 import SiteFooter from "./components/layout/SiteFooter.jsx";
+import Analytics from "./components/Analytics.jsx";
 
 import Hero from "./components/sections/Hero.jsx";
 import Products from "./components/sections/Products.jsx";
@@ -20,13 +22,11 @@ import Contact from "./pages/Contact.jsx";
 import NotFound from "./pages/NotFound.jsx";
 
 export default function App() {
-  const AGENCY_NAME = "Tes Insurance Agency";
-  const PHONE = "(215) 555-0199";
-  const EMAIL = "info@tesinsurance.com";
-  const LICENSE = "PA Lic #TBD";
+  const { AGENCY_NAME, PHONE, EMAIL, LICENSE } = SITE;
 
   return (
     <div className="min-h-screen bg-slate-50 text-slate-800">
+      <Analytics />
       <Header agencyName={AGENCY_NAME} phone={PHONE} />
       <main>
         <Routes>

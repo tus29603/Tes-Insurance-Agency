@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
- import ConsentFields from "../ConsentFields.jsx";
+import ConsentFields from "../ConsentFields.jsx";
+import { trackQuoteSubmission, trackFormInteraction, trackCTAClick } from "../../lib/analytics.js";
 
 // For GitHub Pages, simplest is to hardcode your Formspree ID.
 // Later you can switch to env: import.meta.env.VITE_FORMSPREE_ID
@@ -286,6 +287,8 @@ export default function QuoteForm({ dark = false, email = "info@tesinsurance.com
         throw new Error(data?.error || "Failed to send. Please try again.");
       }
 
+      // Track successful quote submission
+      trackQuoteSubmission(form);
       setSuccess(true);
       // reset form + consent
       setForm({
