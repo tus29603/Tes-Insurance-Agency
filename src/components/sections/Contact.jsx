@@ -1,5 +1,6 @@
 import React from "react";
 import QuoteForm from "../forms/QuoteForm.jsx";
+import EmailContactForm from "../forms/EmailContactForm.jsx";
 import { PhoneIcon, MailIcon, PinIcon, ShieldIcon } from "../icons/index.jsx";
 import { digitsOnly } from "../../lib/phone.js";
 
@@ -18,6 +19,9 @@ export default function Contact({ email, phone, license }) {
             </ul>
           </div>
           
+          <div>
+            <EmailContactForm email={email} dark={true} />
+          </div>
         </div>
       </div>
     </section>

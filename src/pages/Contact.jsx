@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import EmailContactForm from "../components/forms/EmailContactForm.jsx";
 
 export default function Contact() {
   const contactInfo = {
@@ -152,20 +153,7 @@ export default function Contact() {
                 </a>
               </div>
 
-              <div className="bg-purple-50 rounded-xl p-6">
-                <h3 className="text-xl font-semibold text-purple-900 mb-4">
-                  Schedule a Consultation
-                </h3>
-                <p className="text-purple-800 mb-4">
-                  Book a free consultation to discuss your insurance needs.
-                </p>
-                <a
-                  href={`mailto:${contactInfo.email}?subject=Schedule Consultation`}
-                  className="inline-flex items-center justify-center w-full bg-purple-600 text-white py-3 px-4 rounded-lg hover:bg-purple-700 transition-colors"
-                >
-                  Email Us
-                </a>
-              </div>
+              <EmailContactForm email={contactInfo.email} />
             </div>
           </div>
         </div>

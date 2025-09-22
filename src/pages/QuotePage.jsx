@@ -1,6 +1,7 @@
 // src/pages/QuotePage.jsx
 import React from "react";
 import QuoteForm from "../components/forms/QuoteForm.jsx";
+import EmailContactForm from "../components/forms/EmailContactForm.jsx";
 
 export default function QuotePage() {
   const EMAIL = "info@tesinsurance.com";
@@ -43,8 +44,22 @@ export default function QuotePage() {
         </div>
 
         <QuoteForm email={EMAIL} />
-        
-        <div className="mt-8 p-4 bg-blue-50 rounded-lg">
+      </div>
+
+      {/* Email Contact Form */}
+      <div className="mt-12">
+        <div className="text-center mb-8">
+          <h2 className="text-3xl font-bold text-slate-900 mb-4">
+            Have Questions?
+          </h2>
+          <p className="text-lg text-slate-600">
+            Send us a message and we'll get back to you within 24 hours.
+          </p>
+        </div>
+        <EmailContactForm email={EMAIL} />
+      </div>
+
+      <div className="mt-12 p-4 bg-blue-50 rounded-lg">
           <h3 className="font-semibold text-blue-900 mb-2">Why Choose Tes Insurance Agency?</h3>
           <ul className="text-sm text-blue-800 space-y-1">
             <li>• Licensed and dedicated insurance professionals</li>
