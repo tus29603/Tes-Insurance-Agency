@@ -1,5 +1,6 @@
 // src/components/forms/EmailContactForm.jsx
 import React, { useState } from "react";
+import SITE from "../../config/site.js";
 
 export default function EmailContactForm({ dark = false, email = "info@tesinsurance.com" }) {
   const [form, setForm] = useState({
@@ -10,6 +11,7 @@ export default function EmailContactForm({ dark = false, email = "info@tesinsura
   });
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState("");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -22,32 +24,44 @@ export default function EmailContactForm({ dark = false, email = "info@tesinsura
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
+    setError("");
 
     try {
-      // Create mailto link with form data
-      const subject = encodeURIComponent(form.subject || `Contact from ${form.name}`);
-      const body = encodeURIComponent(
-        `Name: ${form.name}\n` +
-        `Email: ${form.email}\n` +
-        `Subject: ${form.subject}\n\n` +
-        `Message:\n${form.message}`
-      );
-      
-      const mailtoLink = `mailto:${email}?subject=${subject}&body=${body}`;
-      
-      // Open email client
-      window.location.href = mailtoLink;
-      
-      // Show success message
-      setSubmitted(true);
-      setTimeout(() => {
-        setSubmitted(false);
+      // Use Formspree to send email
+      const formData = new FormData();
+      formData.append("name", form.name);
+      formData.append("email", form.email);
+      formData.append("subject", form.subject || `Contact from ${form.name}`);
+      formData.append("message", form.message);
+      formData.append("_replyto", form.email);
+      formData.append("_subject", `New Contact Form Submission - ${form.subject || form.name}`);
+
+      const response = await fetch(`https://formspree.io/f/${SITE.FORMSPREE_ID}`, {
+        method: "POST",
+        body: formData,
+        headers: {
+          "Accept": "application/json"
+        }
+      });
+
+      if (response.ok) {
+        setSubmitted(true);
         setForm({ name: "", email: "", subject: "", message: "" });
-      }, 3000);
+        setTimeout(() => {
+          setSubmitted(false);
+        }, 5000);
+      } else {
+        const data = await response.json();
+        if (data.errors) {
+          setError(data.errors.map(error => error.message).join(", "));
+        } else {
+          setError("There was a problem sending your message. Please try again.");
+        }
+      }
       
     } catch (error) {
-      console.error("Error opening email client:", error);
-      alert("Please make sure you have an email client configured on your device.");
+      console.error("Error sending message:", error);
+      setError("There was a problem sending your message. Please try again or email us directly.");
     } finally {
       setLoading(false);
     }
@@ -72,10 +86,10 @@ export default function EmailContactForm({ dark = false, email = "info@tesinsura
             </svg>
           </div>
           <h4 className="text-xl font-semibold text-green-600 dark:text-green-400 mb-2">
-            Message Sent!
+            Message Sent Successfully!
           </h4>
           <p className="text-slate-600 dark:text-slate-300">
-            Your email client should have opened. If not, please email us directly at{" "}
+            Thank you for contacting us. We'll get back to you within 24 hours at{" "}
             <a href={`mailto:${email}`} className="text-blue-600 dark:text-blue-400 hover:underline">
               {email}
             </a>
@@ -83,6 +97,26 @@ export default function EmailContactForm({ dark = false, email = "info@tesinsura
         </div>
       ) : (
         <form onSubmit={handleSubmit} className="space-y-4">
+          {error && (
+            <div className="bg-red-50 dark:bg-red-900 border border-red-200 dark:border-red-700 rounded-md p-4">
+              <div className="flex">
+                <div className="flex-shrink-0">
+                  <svg className="h-5 w-5 text-red-400" viewBox="0 0 20 20" fill="currentColor">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
+                  </svg>
+                </div>
+                <div className="ml-3">
+                  <h3 className="text-sm font-medium text-red-800 dark:text-red-200">
+                    Error sending message
+                  </h3>
+                  <div className="mt-2 text-sm text-red-700 dark:text-red-300">
+                    <p>{error}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+          
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
               <label htmlFor="name" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">
@@ -163,7 +197,7 @@ export default function EmailContactForm({ dark = false, email = "info@tesinsura
                     <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                     <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                   </svg>
-                  Opening Email Client...
+                  Sending Message...
                 </>
               ) : (
                 <>
@@ -178,7 +212,8 @@ export default function EmailContactForm({ dark = false, email = "info@tesinsura
 
           <div className="text-center text-sm text-slate-500 dark:text-slate-400">
             <p>
-              This will open your default email client. If you prefer, you can email us directly at{" "}
+              Your message will be sent directly to our team. We'll respond within 24 hours. 
+              You can also email us directly at{" "}
               <a href={`mailto:${email}`} className="text-blue-600 dark:text-blue-400 hover:underline">
                 {email}
               </a>
