@@ -4,6 +4,7 @@ import SITE from "./config/site.js";
 import Header from "./components/layout/Header.jsx";
 import SiteFooter from "./components/layout/SiteFooter.jsx";
 import Analytics from "./components/Analytics.jsx";
+import ScrollToTop from "./components/ScrollToTop.jsx";
 
 import Hero from "./components/sections/Hero.jsx";
 import Products from "./components/sections/Products.jsx";
@@ -73,6 +74,7 @@ export default function App() {
         </Routes>
       </main>
       <SiteFooter agencyName={AGENCY_NAME} license={LICENSE} email={EMAIL} />
+      <ScrollToTop />
     </div>
   );
 }

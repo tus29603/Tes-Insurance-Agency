@@ -1,0 +1,104 @@
+{
+  "labels": [
+    {
+      "name": "bug",
+      "color": "d73a4a",
+      "description": "Something isn't working"
+    },
+    {
+      "name": "enhancement",
+      "color": "a2eeef",
+      "description": "New feature or request"
+    },
+    {
+      "name": "documentation",
+      "color": "0075ca",
+      "description": "Improvements or additions to documentation"
+    },
+    {
+      "name": "frontend",
+      "color": "7057ff",
+      "description": "UI/UX related issues"
+    },
+    {
+      "name": "backend",
+      "color": "008672",
+      "description": "API, database, or server-side issues"
+    },
+    {
+      "name": "infrastructure",
+      "color": "f9d0c4",
+      "description": "DevOps, deployment, or infrastructure"
+    },
+    {
+      "name": "design",
+      "color": "ffc1cc",
+      "description": "Design, UX, or content improvements"
+    },
+    {
+      "name": "analytics",
+      "color": "0e8a16",
+      "description": "Tracking, metrics, or analytics"
+    },
+    {
+      "name": "performance",
+      "color": "ff6b6b",
+      "description": "Performance improvements"
+    },
+    {
+      "name": "security",
+      "color": "b60205",
+      "description": "Security vulnerabilities or improvements"
+    },
+    {
+      "name": "priority: high",
+      "color": "ff0000",
+      "description": "High priority issue"
+    },
+    {
+      "name": "priority: medium",
+      "color": "ffa500",
+      "description": "Medium priority issue"
+    },
+    {
+      "name": "priority: low",
+      "color": "ffff00",
+      "description": "Low priority issue"
+    },
+    {
+      "name": "good first issue",
+      "color": "7057ff",
+      "description": "Good for newcomers"
+    },
+    {
+      "name": "help wanted",
+      "color": "008672",
+      "description": "Extra attention is needed"
+    },
+    {
+      "name": "wontfix",
+      "color": "ffffff",
+      "description": "This will not be worked on"
+    },
+    {
+      "name": "duplicate",
+      "color": "cfd3d7",
+      "description": "This issue or pull request already exists"
+    },
+    {
+      "name": "invalid",
+      "color": "e4e669",
+      "description": "This doesn't seem right"
+    },
+    {
+      "name": "question",
+      "color": "d876e3",
+      "description": "Further information is requested"
+    },
+    {
+      "name": "later",
+      "color": "c5def5",
+      "description": "Future ideas or roadmap items"
+    }
+  ]
+}
