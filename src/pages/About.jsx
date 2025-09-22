@@ -2,26 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 export default function About() {
-  const team = [
-    {
-      name: "Tesfie Tsegaye",
-      role: "Founder & CEO",
-      description: "Licensed insurance professional focused on providing personalized service and competitive rates to the Philadelphia community. Tesfie founded Tes Insurance Agency to help individuals and businesses find the right coverage.",
-      specialties: ["Auto Insurance", "Home Insurance", "Commercial Insurance", "Risk Management"]
-    },
-    {
-      name: "Sarah Johnson",
-      role: "Insurance Agent",
-      description: "Specializes in homeowners and renters insurance with a focus on helping families find comprehensive coverage that fits their budget.",
-      specialties: ["Home Insurance", "Renters Insurance", "Umbrella Insurance", "Claims Support"]
-    },
-    {
-      name: "Michael Rodriguez",
-      role: "Commercial Insurance Specialist",
-      description: "Expert in commercial insurance solutions for small to medium businesses, helping entrepreneurs protect their investments and operations.",
-      specialties: ["General Liability", "Workers' Compensation", "Commercial Auto", "Business Insurance"]
-    }
-  ];
 
   const values = [
     {
@@ -175,54 +155,6 @@ export default function About() {
         </div>
       </section>
 
-      {/* Our Team */}
-      <section className="py-16 bg-slate-50">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-slate-900 mb-4">
-              Meet Our Team
-            </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-              Our experienced professionals are here to help you find the right insurance solutions.
-            </p>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {team.map((member, index) => (
-              <div key={index} className="bg-white rounded-xl shadow-lg p-6">
-                <div className="text-center mb-4">
-                  <div className="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <span className="text-2xl font-bold text-blue-600">
-                      {member.name.split(' ').map(n => n[0]).join('')}
-                    </span>
-                  </div>
-                  <h3 className="text-xl font-semibold text-slate-900">
-                    {member.name}
-                  </h3>
-                  <p className="text-blue-600 font-medium">
-                    {member.role}
-                  </p>
-                </div>
-                <p className="text-slate-600 mb-4">
-                  {member.description}
-                </p>
-                <div>
-                  <h4 className="font-semibold text-slate-900 mb-2">Specialties:</h4>
-                  <div className="flex flex-wrap gap-2">
-                    {member.specialties.map((specialty, idx) => (
-                      <span
-                        key={idx}
-                        className="px-3 py-1 bg-blue-50 text-blue-700 text-sm rounded-full"
-                      >
-                        {specialty}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* CTA Section */}
       <section className="py-16 bg-blue-600 text-white">
