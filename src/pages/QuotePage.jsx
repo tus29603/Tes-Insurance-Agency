@@ -68,7 +68,6 @@ export default function QuotePage() {
             <li>• 24/7 claims support and customer service</li>
           </ul>
         </div>
-      </div>
     </section>
   );
 }
