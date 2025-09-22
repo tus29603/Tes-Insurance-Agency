@@ -5,6 +5,7 @@ import Header from "./components/layout/Header.jsx";
 import SiteFooter from "./components/layout/SiteFooter.jsx";
 import Analytics from "./components/Analytics.jsx";
 import ScrollToTop from "./components/ScrollToTop.jsx";
+import AnalyticsDebugger from "./components/AnalyticsDebugger.jsx";
 
 import Hero from "./components/sections/Hero.jsx";
 import Products from "./components/sections/Products.jsx";
@@ -75,6 +76,7 @@ export default function App() {
       </main>
       <SiteFooter agencyName={AGENCY_NAME} license={LICENSE} email={EMAIL} />
       <ScrollToTop />
+      {import.meta.env.DEV && <AnalyticsDebugger />}
     </div>
   );
 }
