@@ -24,7 +24,7 @@
    Set the following in Vercel dashboard:
    ```
    VITE_AGENCY_NAME=Tes Insurance Agency
-   VITE_PHONE=(215) 555-0199
+   VITE_PHONE=215-839-6506
    VITE_EMAIL=info@tesinsurance.com
    VITE_ADDRESS=6622 Cormorant Pl, Philadelphia, PA 19142
    VITE_LICENSE=PA Lic #TBD
