@@ -1,4 +1,4 @@
-import Database from 'better-sqlite3';
+import sqlite3 from 'sqlite3';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import fs from 'fs';
@@ -22,13 +22,13 @@ class DatabaseConnection {
 
       // Connect to database
       const dbPath = process.env.DATABASE_URL || path.join(dataDir, 'insurance.db');
-      this.db = new Database(dbPath);
+      this.db = new sqlite3.Database(dbPath);
       
       // Enable foreign keys
-      this.db.pragma('foreign_keys = ON');
+      this.db.run('PRAGMA foreign_keys = ON');
       
       // Enable WAL mode for better concurrency
-      this.db.pragma('journal_mode = WAL');
+      this.db.run('PRAGMA journal_mode = WAL');
       
       console.log(`📊 Connected to database: ${dbPath}`);
       
@@ -75,13 +75,53 @@ class DatabaseConnection {
 
   // Transaction helper
   transaction(callback) {
-    const transaction = this.db.transaction(callback);
-    return transaction;
+    return new Promise((resolve, reject) => {
+      this.db.serialize(() => {
+        this.db.run('BEGIN TRANSACTION');
+        callback(this.db)
+          .then(() => {
+            this.db.run('COMMIT', (err) => {
+              if (err) reject(err);
+              else resolve();
+            });
+          })
+          .catch((err) => {
+            this.db.run('ROLLBACK', () => {
+              reject(err);
+            });
+          });
+      });
+    });
   }
 
   // Prepared statement helper
   prepare(sql) {
-    return this.db.prepare(sql);
+    return {
+      run: (...params) => {
+        return new Promise((resolve, reject) => {
+          this.db.run(sql, params, function(err) {
+            if (err) reject(err);
+            else resolve({ changes: this.changes, lastID: this.lastID });
+          });
+        });
+      },
+      get: (...params) => {
+        return new Promise((resolve, reject) => {
+          this.db.get(sql, params, (err, row) => {
+            if (err) reject(err);
+            else resolve(row);
+          });
+        });
+      },
+      all: (...params) => {
+        return new Promise((resolve, reject) => {
+          this.db.all(sql, params, (err, rows) => {
+            if (err) reject(err);
+            else resolve(rows);
+          });
+        });
+      }
+    };
   }
 
   // Close connection
@@ -95,12 +135,15 @@ class DatabaseConnection {
 
   // Health check
   healthCheck() {
-    try {
-      const result = this.db.prepare('SELECT 1 as health').get();
-      return { status: 'healthy', result };
-    } catch (error) {
-      return { status: 'unhealthy', error: error.message };
-    }
+    return new Promise((resolve) => {
+      this.db.get('SELECT 1 as health', (err, row) => {
+        if (err) {
+          resolve({ status: 'unhealthy', error: err.message });
+        } else {
+          resolve({ status: 'healthy', result: row });
+        }
+      });
+    });
   }
 }
 
