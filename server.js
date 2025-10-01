@@ -32,18 +32,60 @@ function generateUUID() {
 let db;
 function initializeDatabase() {
   return new Promise((resolve, reject) => {
+    // Use Render's data directory or fallback to local data directory
+    const dataDir = process.env.NODE_ENV === 'production' 
+      ? '/opt/render/project/data' 
+      : path.join(__dirname, 'data');
+    
     // Ensure data directory exists
-    const dataDir = path.join(__dirname, 'data');
     if (!fs.existsSync(dataDir)) {
-      fs.mkdirSync(dataDir, { recursive: true });
+      try {
+        fs.mkdirSync(dataDir, { recursive: true });
+        console.log(`📁 Created data directory: ${dataDir}`);
+      } catch (err) {
+        console.error('❌ Failed to create data directory:', err);
+        // Fallback to temp directory if we can't create the preferred one
+        const fallbackDir = process.env.NODE_ENV === 'production' 
+          ? '/tmp/data' 
+          : path.join(__dirname, 'data');
+        if (!fs.existsSync(fallbackDir)) {
+          fs.mkdirSync(fallbackDir, { recursive: true });
+        }
+        console.log(`📁 Using fallback data directory: ${fallbackDir}`);
+      }
     }
 
     const dbPath = process.env.DATABASE_URL || path.join(dataDir, 'insurance.db');
-    db = new sqlite3.Database(dbPath);
+    console.log(`📊 Attempting to connect to database: ${dbPath}`);
     
-    console.log(`📊 Connected to database: ${dbPath}`);
-    
-    // Create tables
+    db = new sqlite3.Database(dbPath, (err) => {
+      if (err) {
+        console.error('❌ Database connection failed:', err);
+        // Try fallback path
+        const fallbackPath = process.env.NODE_ENV === 'production' 
+          ? '/tmp/insurance.db' 
+          : path.join(__dirname, 'insurance.db');
+        console.log(`📊 Trying fallback database path: ${fallbackPath}`);
+        
+        db = new sqlite3.Database(fallbackPath, (fallbackErr) => {
+          if (fallbackErr) {
+            console.error('❌ Fallback database connection also failed:', fallbackErr);
+            reject(fallbackErr);
+            return;
+          }
+          console.log(`✅ Connected to fallback database: ${fallbackPath}`);
+          createTables().then(() => seedDatabase().then(resolve).catch(reject)).catch(reject);
+        });
+      } else {
+        console.log(`✅ Connected to database: ${dbPath}`);
+        createTables().then(() => seedDatabase().then(resolve).catch(reject)).catch(reject);
+      }
+    });
+  });
+}
+
+function createTables() {
+  return new Promise((resolve, reject) => {
     db.exec(`
       CREATE TABLE IF NOT EXISTS users (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -98,11 +140,11 @@ function initializeDatabase() {
       );
     `, (err) => {
       if (err) {
-        console.error('❌ Database initialization failed:', err);
+        console.error('❌ Database table creation failed:', err);
         reject(err);
       } else {
         console.log('✅ Database tables created');
-        seedDatabase().then(resolve).catch(reject);
+        resolve();
       }
     });
   });
