@@ -1,6 +1,6 @@
 import express from 'express';
 import { body, validationResult } from 'express-validator';
-import { v4 as uuidv4 } from 'uuid';
+import crypto from 'crypto';
 import dbConnection from '../database/connection.js';
 import { validateLeadData } from '../middleware/validation.js';
 import { auditLog } from '../middleware/auditLog.js';
@@ -147,7 +147,7 @@ router.post('/', validateLeadData, async (req, res) => {
       });
     }
     
-    const leadId = uuidv4();
+    const leadId = crypto.randomUUID();
     const { leadData, leadDetails } = req.body;
     
     // Insert lead

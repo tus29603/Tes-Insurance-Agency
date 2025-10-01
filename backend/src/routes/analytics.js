@@ -1,5 +1,5 @@
 import express from 'express';
-import { v4 as uuidv4 } from 'uuid';
+import crypto from 'crypto';
 import dbConnection from '../database/connection.js';
 import { validateAnalyticsEvent } from '../middleware/validation.js';
 
@@ -8,7 +8,7 @@ const router = express.Router();
 // Track analytics event
 router.post('/track', validateAnalyticsEvent, async (req, res) => {
   try {
-    const eventId = uuidv4();
+    const eventId = crypto.randomUUID();
     const {
       event_type,
       event_category,

@@ -95,10 +95,20 @@ app.use('*', (req, res) => {
 app.use(errorHandler);
 
 // Start server
-app.listen(PORT, () => {
+app.listen(PORT, async () => {
   console.log(`🚀 Tes Insurance Backend API running on port ${PORT}`);
   console.log(`📊 Environment: ${process.env.NODE_ENV || 'development'}`);
   console.log(`🔗 Health check: http://localhost:${PORT}/health`);
+  
+  // Initialize database in production
+  if (process.env.NODE_ENV === 'production') {
+    try {
+      const { default: initDB } = await import('./database/init-production.js');
+      console.log('✅ Database initialization completed');
+    } catch (error) {
+      console.error('❌ Database initialization failed:', error);
+    }
+  }
 });
 
 // Graceful shutdown

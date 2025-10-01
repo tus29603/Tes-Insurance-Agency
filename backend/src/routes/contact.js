@@ -1,5 +1,5 @@
 import express from 'express';
-import { v4 as uuidv4 } from 'uuid';
+import crypto from 'crypto';
 import dbConnection from '../database/connection.js';
 import { validateContactMessage } from '../middleware/validation.js';
 import { auditLog } from '../middleware/auditLog.js';
@@ -116,7 +116,7 @@ router.get('/:messageId', async (req, res) => {
 // Create new contact message
 router.post('/', validateContactMessage, async (req, res) => {
   try {
-    const messageId = uuidv4();
+    const messageId = crypto.randomUUID();
     const { name, email, subject, message, priority = 'normal' } = req.body;
     
     const insertMessage = dbConnection.prepare(`
