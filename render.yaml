@@ -11,7 +11,7 @@ services:
       - key: PORT
         value: 10000
       - key: DATABASE_URL
-        value: /opt/render/project/backend/data/insurance.db
+        value: /opt/render/project/data/insurance.db
       - key: CORS_ORIGIN
         value: https://tes-insurance-agency.vercel.app,https://tesinsurance.com
       - key: RATE_LIMIT_WINDOW_MS

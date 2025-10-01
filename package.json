@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "echo 'Frontend build - use backend/build for API'",
-    "start": "node backend/src/server.js",
+    "start": "node server.js",
     "backend:build": "cd backend && npm install",
     "backend:start": "cd backend && npm start",
     "install:all": "npm install && cd backend && npm install",
