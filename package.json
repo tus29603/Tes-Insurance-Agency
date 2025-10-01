@@ -9,6 +9,7 @@
     "start": "npm run backend:start",
     "backend:build": "cd backend && npm install",
     "backend:start": "cd backend && npm start",
+    "install:all": "npm install && cd backend && npm install",
     "build:dev": "NODE_ENV=development vite build",
     "build:prod": "NODE_ENV=production vite build",
     "preview": "vite preview",

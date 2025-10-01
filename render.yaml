@@ -3,7 +3,7 @@ services:
     name: tes-insurance-backend
     env: node
     plan: free
-    buildCommand: npm install
+    buildCommand: npm run install:all
     startCommand: npm start
     envVars:
       - key: NODE_ENV
