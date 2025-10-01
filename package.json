@@ -5,7 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "echo 'Frontend build - use backend/build for API'",
+    "backend:build": "cd backend && npm install",
+    "backend:start": "cd backend && npm start",
     "build:dev": "NODE_ENV=development vite build",
     "build:prod": "NODE_ENV=production vite build",
     "preview": "vite preview",
